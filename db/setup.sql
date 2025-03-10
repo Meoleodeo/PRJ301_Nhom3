@@ -1,4 +1,5 @@
 -- Step 1: Create Database
+
 create DATABASE Shope;
 GO
 USE Shope;
@@ -17,12 +18,6 @@ CREATE TABLE Users (
 );
 GO
 
--- Step 3: Create Categories Table
-CREATE TABLE Categories (
-    CategoryID INT IDENTITY(1,1) PRIMARY KEY,
-    CategoryName NVARCHAR(50) NOT NULL UNIQUE
-);
-GO
 
 -- Step 4: Create Products Table
 CREATE TABLE Products (
@@ -56,73 +51,57 @@ CREATE TABLE OrderDetails (
 );
 GO
 
--- Step 7: Create Payments Table
-CREATE TABLE Payments (
-    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
-    OrderID INT FOREIGN KEY REFERENCES Orders(OrderID),
-    PaymentDate DATETIME DEFAULT GETDATE(),
-    Amount DECIMAL(10,2) NOT NULL,
-    PaymentMethod NVARCHAR(50) CHECK (PaymentMethod IN ('Credit Card', 'PayPal', 'Bank Transfer', 'Cash on Delivery'))
-);
-GO
 
--- Step 8: Insert Sample Data into Users
 INSERT INTO Users (Username, Email, PasswordHash, Role, Address, Phone)
 VALUES 
-('admin', 'admin@shope.com', 'hashedpassword', 'Admin', NULL, NULL),
-('john_doe', 'john@example.com', 'hashedpassword', 'Customer', '123 Street, City', '1234567890');
+('admin', 'admin@shope.com', 'hashedpassword1', 'Admin', NULL, NULL),
+('john_doe', 'john@example.com', 'hashedpassword2', 'Customer', '123 Main St, City', '1234567890'),
+('jane_smith', 'jane@example.com', 'hashedpassword3', 'Customer', '456 Elm St, City', '0987654321'),
+('alice_jones', 'alice@example.com', 'hashedpassword4', 'Customer', '789 Pine St, City', '1122334455'),
+('bob_brown', 'bob@example.com', 'hashedpassword5', 'Customer', '101 Maple St, City', '6677889900'),
+('charlie_white', 'charlie@example.com', 'hashedpassword6', 'Customer', '202 Birch St, City', '3344556677'),
+('dave_black', 'dave@example.com', 'hashedpassword7', 'Customer', '303 Oak St, City', '2233445566'),
+('emma_green', 'emma@example.com', 'hashedpassword8', 'Customer', '404 Cedar St, City', '7788990011'),
+('frank_yellow', 'frank@example.com', 'hashedpassword9', 'Customer', '505 Spruce St, City', '8899001122'),
+('grace_purple', 'grace@example.com', 'hashedpassword10', 'Customer', '606 Willow St, City', '9900112233');
 GO
-
--- Step 9: Insert Sample Data into Categories
-INSERT INTO Categories (CategoryName)
-VALUES 
-('Electronics'),
-('Clothing'),
-('Home Appliances');
-GO
-
--- Step 10: Insert Sample Data into Products
 INSERT INTO Products (ProductName, Description, CategoryID, Price, StockQuantity, ProductImage)
 VALUES 
 ('iPhone 13', 'Latest Apple iPhone with A15 Bionic chip', 1, 999.99, 50, '/images/iphone13.jpg'),
+('Samsung Galaxy S22', 'Flagship Android phone with high-end specs', 1, 899.99, 40, '/images/s22.jpg'),
 ('T-shirt', '100% Cotton T-shirt', 2, 19.99, 200, '/images/tshirt.jpg'),
-('Microwave Oven', '800W Microwave for quick heating', 3, 149.99, 30, '/images/microwave.jpg');
+('Jeans', 'Comfortable denim jeans', 2, 39.99, 150, '/images/jeans.jpg'),
+('Microwave Oven', '800W Microwave for quick heating', 3, 149.99, 30, '/images/microwave.jpg'),
+('Refrigerator', 'Large capacity fridge with freezer', 3, 799.99, 25, '/images/fridge.jpg'),
+('The Great Gatsby', 'Classic novel by F. Scott Fitzgerald', 4, 14.99, 100, '/images/gatsby.jpg'),
+('Ergonomic Chair', 'Comfortable office chair', 5, 129.99, 50, '/images/chair.jpg'),
+('Laptop - Dell XPS 13', 'Powerful laptop for work and gaming', 1, 1299.99, 30, '/images/laptop.jpg'),
+('Smartwatch - Apple Watch', 'Track fitness and receive notifications', 1, 349.99, 80, '/images/watch.jpg');
 GO
-
--- Step 11: Insert Sample Order
 INSERT INTO Orders (UserID, Status)
-VALUES (2, 'Pending');
+VALUES 
+(2, 'Pending'),   -- John Doe
+(3, 'Shipped'),   -- Jane Smith
+(4, 'Delivered'), -- Alice Jones
+(5, 'Cancelled'), -- Bob Brown
+(6, 'Pending'),   -- Charlie White
+(7, 'Shipped'),   -- Dave Black
+(8, 'Delivered'), -- Emma Green
+(9, 'Pending'),   -- Frank Yellow
+(10, 'Cancelled'),-- Grace Purple
+(2, 'Shipped');   -- John Doe (Another order)
 GO
-
--- Step 12: Insert Sample Order Details
 INSERT INTO OrderDetails (OrderID, ProductID, Quantity)
-VALUES (1, 1, 2); -- John bought 2 iPhones
+VALUES 
+(1, 1, 2),  -- John bought 2 iPhones
+(1, 3, 1),  -- John bought 1 T-shirt
+(2, 2, 1),  -- Jane bought 1 Samsung Galaxy
+(3, 4, 2),  -- Alice bought 2 Jeans
+(4, 5, 1),  -- Bob bought 1 Microwave Oven (but cancelled)
+(5, 6, 1),  -- Charlie bought 1 Refrigerator
+(6, 7, 3),  -- Dave bought 3 Books
+(7, 8, 2),  -- Emma bought 2 Chairs
+(8, 9, 1),  -- Frank bought 1 Laptop
+(9, 10, 2); -- Grace bought 2 Smartwatches (but cancelled)
 GO
 
--- Step 13: Insert Sample Payment
-INSERT INTO Payments (OrderID, Amount, PaymentMethod)
-VALUES (1, 1999.98, 'Credit Card'); -- John paid for 2 iPhones
-GO
-
--- Step 14: Useful Queries
-
--- Get All Orders with User Details
-SELECT O.OrderID, U.Username, U.Email, O.OrderDate, O.Status
-FROM Orders O
-JOIN Users U ON O.UserID = U.UserID;
-GO
-
--- Get Order Details for a Specific Order
-SELECT OD.OrderDetailID, P.ProductName, OD.Quantity, OD.Subtotal
-FROM OrderDetails OD
-JOIN Products P ON OD.ProductID = P.ProductID
-WHERE OD.OrderID = 1;
-GO
-
--- Check Stock of a Product
-SELECT ProductName, StockQuantity FROM Products WHERE ProductID = 1;
-GO
-
--- Total Revenue from Orders
-SELECT SUM(Amount) AS TotalRevenue FROM Payments;
-GO
