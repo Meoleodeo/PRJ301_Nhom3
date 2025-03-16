@@ -1,7 +1,6 @@
 package dao;
 
 import model.User;
-import config.DatabaseConfig;
 import java.sql.*;
 import java.util.logging.Logger;
 
