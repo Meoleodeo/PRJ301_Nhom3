@@ -31,5 +31,5 @@ public class Order {
     public void setProductId(int productId) { this.productId = productId; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
     public void setStatus(String status) { this.status = status; }
-    public void setOrderDate(Date orderDate) { this.orderDate = orderDate; }
+    public void setOrderDate(Date orderDate) { this.orderDate = orderDate; }    
 }

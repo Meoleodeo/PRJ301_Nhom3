@@ -74,7 +74,7 @@ public class OrderDAO {
         return orders;
     }
 // Cập nhật trạng thái đơn hàng
-
+    
     public static boolean updateOrderStatus(int orderId, String status) {
         try (Connection conn = DatabaseConfig.getConnection()) {
             String sql = "UPDATE Orders SET status = ? WHERE id = ?";
@@ -87,5 +87,5 @@ public class OrderDAO {
         }
         return false;
     }
-
+    
 }
