@@ -30,8 +30,43 @@ git add .
 git commit -m "ur mesg"
 git push
 ```
-... `docs/git-lifecycle.md`
+more at : `docs/git-lifecycle.md`
 
+## set up 
+### script: [here](https://github.com/Meoleodeo/PRJ301_Nhom3/db/)
+### DatabaseConfig:
+```java
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class DatabaseConfig {
+     public static String DRIVERNAME="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    public static String URL="jdbc:sqlserver://127.0.0.1:urPort;databaseName=BlackShope;encrypt=true;trustServerCertificate=true;loginTimeout=30;";
+    public static String USER="urUName";
+    public static String PASSWORD="urPass";
+     public static Connection getConnection() throws SQLException {
+        try {
+            Class.forName(DRIVERNAME);
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("SQL Server JDBC Driver not found", e);
+        }
+    }
+    // main test
+     public static void main(String[] args) {
+         try {
+             getConnection();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseConfig.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+}
+```
 
 
 ## Cấu trúc thư mục
