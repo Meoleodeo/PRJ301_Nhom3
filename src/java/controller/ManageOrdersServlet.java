@@ -23,7 +23,7 @@ public class ManageOrdersServlet extends HttpServlet {
 
         List<Order> orders = OrderDAO.getOrdersBySeller(user.getId());
         request.setAttribute("orders", orders);
-        request.getRequestDispatcher("manageOrders.jsp").forward(request, response);
+        request.getRequestDispatcher("managerOrders.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +36,7 @@ public class ManageOrdersServlet extends HttpServlet {
             response.sendRedirect("ManageOrdersServlet");
         } else {
             request.setAttribute("error", "Cập nhật trạng thái thất bại!");
-            request.getRequestDispatcher("manageOrders.jsp").forward(request, response);
+            request.getRequestDispatcher("managerOrders.jsp").forward(request, response);
         }
     }
 }

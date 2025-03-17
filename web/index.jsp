@@ -10,6 +10,7 @@
             <%
                 List<Product> products = ProductDAO.getAllProducts();
                 for (Product product : products) {
+                System.out.println(product.toString());
             %>
                 <div class="col-md-4">
                     <div class="card mb-3">

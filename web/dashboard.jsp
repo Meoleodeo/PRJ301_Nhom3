@@ -8,7 +8,7 @@
         <h2 class="text-center mt-5">Quản lý sản phẩm</h2>
         <div class="d-flex justify-content-between mb-3">
             <a href="addProduct.jsp" class="btn btn-success">+ Thêm sản phẩm</a>
-            <a href="manageOrders.jsp" class="btn btn-primary">Quản lý đơn hàng</a>
+            <a href="ManageOrdersServlet" class="btn btn-primary">Quản lý đơn hàng</a>
         </div>
 
         <table class="table table-striped">

@@ -30,4 +30,10 @@ public class Product {
     public void setDescription(String description) { this.description = description; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", sellerId=" + sellerId + ", name=" + name + ", description=" + description + ", quantity=" + quantity + ", imageUrl=" + imageUrl + '}';
+    }
+    
 }

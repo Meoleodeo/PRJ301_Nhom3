@@ -26,9 +26,9 @@
             </thead>
             <tbody>
                 <%
-                    User user = (User) session.getAttribute("user");
-                    if (user != null && "seller".equals(user.getRole())) {
-                        List<Order> orders = OrderDAO.getOrdersBySeller(user.getId());
+                    User user1 = (User) session.getAttribute("user");
+                    if (user1 != null && "seller".equals(user1.getRole())) {
+                        List<Order> orders = OrderDAO.getOrdersBySeller(user1.getId());
                         for (Order order : orders) {
                 %>
                     <tr>

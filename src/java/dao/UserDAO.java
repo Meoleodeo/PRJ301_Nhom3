@@ -8,7 +8,7 @@ public class UserDAO {
 
     // Lấy thông tin người dùng theo username
     public static User getUserByUsername(String username) {
-        try (Connection conn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USER, DatabaseConfig.PASSWORD)) {
+        try (Connection conn = DatabaseConfig.getConnection()) {
             String sql = "SELECT * FROM Users WHERE username = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
@@ -33,7 +33,7 @@ public class UserDAO {
     public static boolean registerUser(User user) {
         String sql = "INSERT INTO Users (username, password, email, role) VALUES (?, ?, ?, ?)";
 
-        try (Connection conn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USER, DatabaseConfig.PASSWORD); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword()); // Lưu mật khẩu trực tiếp
@@ -54,7 +54,7 @@ public class UserDAO {
 
     // Kiểm tra email có tồn tại không
     public static boolean isEmailExist(String email) {
-        try (Connection conn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USER, DatabaseConfig.PASSWORD)) {
+        try (Connection conn = DatabaseConfig.getConnection()) {
             String sql = "SELECT COUNT(*) FROM Users WHERE email = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, email);
@@ -71,7 +71,7 @@ public class UserDAO {
 
     // Lưu token reset mật khẩu
     public static boolean storeResetToken(String email, String token) {
-        try (Connection conn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USER, DatabaseConfig.PASSWORD)) {
+        try (Connection conn = DatabaseConfig.getConnection()) {
             String sql = "UPDATE Users SET reset_token = ? WHERE email = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, token);
