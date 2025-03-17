@@ -23,7 +23,6 @@
 hs_err_pid*
 replay_pid*
 
-
-/src/java/config/DatabaseConfig.java
 src/java/dao/DatabaseConfig.java
-/nbproject/private
+nbproject/private/private.properties
+nbproject/private/private.xml
