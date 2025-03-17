@@ -33,7 +33,7 @@ git push
 more at : `docs/git-lifecycle.md`
 
 ## set up 
-### script: [here](https://github.com/Meoleodeo/PRJ301_Nhom3/db/)
+### script: [here](https://github.com/Meoleodeo/PRJ301_Nhom3/blob/main/db/setupDbBlackShope.sql)
 ### DatabaseConfig:
 ```java
 package dao;
