@@ -14,7 +14,7 @@
                     <li class="nav-item"><a class="nav-link" href="order.jsp">??n hàng</a></li>
                 <% } else { %>
                     <li class="nav-item"><a class="nav-link" href="dashboard.jsp">Qu?n lý s?n ph?m</a></li>
-                    <li class="nav-item"><a class="nav-link" href="manageOrders.jsp">Qu?n lý ??n hàng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="managerOrders.jsp">Qu?n lý ??n hàng</a></li>
                 <% } %>
                 <li class="nav-item"><a class="nav-link" href="LogoutServlet">??ng xu?t</a></li>
             <% } else { %>

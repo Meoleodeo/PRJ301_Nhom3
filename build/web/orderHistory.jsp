@@ -1,19 +1,25 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/navbar.jsp" %>
-<div class="container mt-4">
-    <h2>L?ch s? ??n hàng</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>S?n ph?m</th>
-                <th>Tr?ng thái</th>
-                <th>Hành ??ng</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- D? li?u ??n hàng s? ???c hi?n th? t? servlet -->
-        </tbody>
-    </table>
-</div>
-<%@ include file="includes/footer.jsp" %>
+<%@ page import="dao.OrderDAO, model.Order, model.User, java.util.List" %>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mt-5">Quáº£n lÃ½ Ä‘Æ¡n hÃ ng</h2>
+
+        <% if (request.getAttribute("success") != null) {%>
+        <div class="alert alert-success">
+            <%= request.getAttribute("success")%>
+        </div>
+        <% } %>
+        <% if (request.getAttribute("error") != null) {%>
+        <div class="alert alert-danger">
+            <%= request.getAttribute("error")%>
+        </div>
+        <% }
+        %>
+
+    </div>
+    <%@ include file="includes/footer.jsp" %>
+</body>
+</html>

@@ -22,7 +22,11 @@
                                 <%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger'>Hết hàng</span>" %>
                             </p>
                             <% if (user != null && "buyer".equals(user.getRole())) { %>
-                                <a href="order.jsp?productId=<%= product.getId() %>" class="btn btn-primary">Đặt hàng</a>
+                                <form action="OrderServlet" method="post">
+                                    <input type="hidden" name="productId" value="<%= product.getId() %>">
+                                    <input type="number" name="quantity" min="1" max="<%= product.getQuantity() %>" required class="form-control mb-2">
+                                    <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                                </form>
                             <% } %>
                         </div>
                     </div>
