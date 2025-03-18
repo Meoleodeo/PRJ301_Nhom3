@@ -6,6 +6,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
+    // Lấy sản phẩm theo ID
+    public static Product getProductById(int productId) {
+        try (Connection conn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USER, DatabaseConfig.PASSWORD)) {
+            String sql = "SELECT * FROM Products WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, productId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new Product(
+                    rs.getInt("id"),
+                    rs.getInt("sellerId"),
+                    rs.getString("name"),
+                    rs.getString("description"),
+                    rs.getInt("quantity"),
+                    rs.getString("imageUrl")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     // Lấy tất cả sản phẩm
     public static List<Product> getAllProducts() {
