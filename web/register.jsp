@@ -1,7 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="includes/header.jsp" %>
-<%@ include file="includes/navbar.jsp" %>
-
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title> 
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
@@ -36,6 +39,5 @@
             </div>
         </div>
     </div>
-    <%@ include file="includes/footer.jsp" %>
 </body>
 </html>
