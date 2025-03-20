@@ -27,3 +27,4 @@ src/java/dao/DatabaseConfig.java
 nbproject/private/private.properties
 /nbproject/private/private.xml
 /dist
+/nbproject/private/
