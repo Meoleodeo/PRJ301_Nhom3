@@ -40,7 +40,7 @@
                         <img src="assets/image/icons/instagram.jpg" alt="Instagram" class="social-icon me-2">Instagram
                     </a>
                     <a href="#" class="text-white text-decoration-none d-block">
-                        <img src="assets/image/icons/tiktok.jpg" alt="Twitter" class="social-icon me-2">Twitter
+                        <img src="assets/image/icons/tiktok.jpg" alt="Twitter" class="social-icon me-2">Tiktok
                     </a>
                 </div>
             </div>
