@@ -11,10 +11,11 @@
                 <th>Mã sản phẩm</th>
                 <th>Số lượng</th>
                 <th>Trạng thái</th>
+                <th>Thanh toán</th> <!-- Thêm cột Thanh toán -->
                 <th>Ngày đặt</th>
             </tr>
             <%
-                User user = (User) session.getAttribute("user");
+            
                 if (user != null && "buyer".equals(user.getRole())) {
                     List<Order> orders = OrderDAO.getOrdersByBuyer(user.getId());
                     for (Order order : orders) {
@@ -24,6 +25,11 @@
                     <td><%= order.getProductId() %></td>
                     <td><%= order.getQuantity() %></td>
                     <td><%= order.getStatus() %></td>
+                    <td>
+                        <span class="<%= "Paid".equals(order.getPaymentStatus()) ? "text-success" : "text-danger" %>">
+                            <%= order.getPaymentStatus() %>
+                        </span>
+                    </td>
                     <td><%= order.getOrderDate() %></td>
                 </tr>
             <% 

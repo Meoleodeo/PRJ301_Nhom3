@@ -17,6 +17,7 @@
                 <th>Tên</th>
                 <th>Mô tả</th>
                 <th>Số lượng</th>
+                <th>Giá</th> <!-- Thêm cột Giá -->
                 <th>Hành động</th>
             </tr>
             <%
@@ -29,6 +30,7 @@
                     <td><%= product.getName() %></td>
                     <td><%= product.getDescription() %></td>
                     <td><%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger'>Hết hàng</span>" %></td>
+                    <td><%= String.format("%,.2f", product.getPrice()) %> VNĐ</td> <!-- Hiển thị giá -->
                     <td>
                         <a href="editProduct.jsp?id=<%= product.getId() %>" class="btn btn-warning">Sửa</a>
                         <a href="#" onclick="confirmDelete(<%= product.getId() %>)" class="btn btn-danger">Xóa</a>

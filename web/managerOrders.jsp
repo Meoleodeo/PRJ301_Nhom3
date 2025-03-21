@@ -21,6 +21,7 @@
                     <th>Mã sản phẩm</th>
                     <th>Số lượng</th>
                     <th>Trạng thái</th>
+                    <th>Thanh toán</th> <!-- Thêm cột Thanh toán -->
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -40,6 +41,11 @@
                                            "Cancelled".equals(order.getStatus()) ? "text-danger" :
                                            "text-warning" %>">
                                 <%= order.getStatus() %>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="<%= "Paid".equals(order.getPaymentStatus()) ? "text-success" : "text-danger" %>">
+                                <%= order.getPaymentStatus() %>
                             </span>
                         </td>
                         <td>
