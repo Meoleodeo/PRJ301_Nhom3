@@ -1,25 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-
-body {
+.login, .register {
     background-image: url(../image/log.jpeg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
 }
-
-.container {
+.container-login, .container-register {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border-radius: 20px;
@@ -33,7 +19,6 @@ body {
     animation: fadeInContainer 0.8s ease-out;
     margin-right: 150px;
 }
-
 @keyframes fadeInContainer {
     0% {
         opacity: 0;
@@ -44,45 +29,37 @@ body {
         transform: translateY(0);
     }
 }
-
-.container h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+.container-login input:focus, .container-register input:focus,
+.container-login select:focus, .container-register select:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
-
-.container p {
-    font-size: 14px;
-    color: #ddd;
-    text-align: center;
-    margin: 20px 0;
-    font-weight: 400;
-}
-
-.container a {
-    color: #fff;
-    font-size: 13px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.container a:hover {
+a:hover {
     color: #a0e7e5; 
     transform: translateY(-1px);
 }
-
-.container form {
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+form {
     display: flex;
     flex-direction: column;
     width: 100%;
     animation: slideInForm 0.6s ease-out;
 }
 
+.container-label {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
 @keyframes slideInForm {
     0% {
         opacity: 0;
@@ -93,92 +70,38 @@ body {
         transform: translateX(0);
     }
 }
-
-.container label {
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-}
-
-.container input,
-.container select {
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    margin-bottom: 15px;
-    padding: 12px 15px;
-    font-size: 14px;
-    border-radius: 8px;
-    width: 100%;
-    outline: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.container input:focus,
-.container select:focus {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.container button {
-    background: linear-gradient(135deg, #1e1e1e, #333); /* Gradient button */
-    color: #fff;
-    font-size: 14px;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
+.container-h2 {
+    font-size: 28px;
     font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.alert {
+.container-p {
     font-size: 14px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    padding: 10px;
+    color: #ddd;
     text-align: center;
-    color: #721c24;
-    background: rgba(248, 215, 218, 0.9);
-    border: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.6s ease-out;
+    margin: 20px 0;
+    font-weight: 400;
 }
 
-.row {
-    margin: 0;
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 1000;
+    background-color: white; /* Đảm bảo nền không bị trong suốt */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho thanh nav */
 }
 
-.col-md-6 {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.mt-5 {
-    margin-top: 0 !important;
-}
-
-.mb-3 {
-    margin-bottom: 0 !important; 
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+footer {
+    background-color: #343a40; /* Màu tối cho footer */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto; /* Đẩy footer xuống cuối */
 }

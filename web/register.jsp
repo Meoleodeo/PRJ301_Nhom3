@@ -2,29 +2,29 @@
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/navbar.jsp" %>
 
-<body>
-    <div class="container">
+<body class="register">
+    <div class="container container-register">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2 class="text-center mt-5">Đăng ký tài khoản</h2>
+                <h2 class="text-center mt-5 container-h2">Đăng ký tài khoản</h2>
                 <% if (request.getAttribute("error") != null) { %>
                     <div class="alert alert-danger"><%= request.getAttribute("error") %></div>
                 <% } %>
                 <form action="RegisterServlet" method="post">
                     <div class="mb-3">
-                        <label>Tên đăng nhập:</label>
+                        <label class="container-label">Tên đăng nhập:</label>
                         <input type="text" class="form-control" name="username" required>
                     </div>
                     <div class="mb-3">
-                        <label>Email:</label>
+                        <label class="container-label">Email:</label>
                         <input type="email" class="form-control" name="email" required>
                     </div>
                     <div class="mb-3">
-                        <label>Mật khẩu:</label>
+                        <label class="container-label">Mật khẩu:</label>
                         <input type="password" class="form-control" name="password" required>
                     </div>
                     <div class="mb-3">
-                        <label>Chọn vai trò:</label>
+                        <label class="container-label">Chọn vai trò:</label>
                         <select class="form-control" name="role">
                             <option value="buyer">Người mua</option>
                             <option value="seller">Người bán</option>

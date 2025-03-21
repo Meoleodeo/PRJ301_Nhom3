@@ -1,10 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="dao.OrderDAO, model.Order, model.User, java.util.List" %>
-<html>
-<head>
-    <title>Đơn hàng của tôi - BlackShope</title>
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
-</head>
+<%@ include file="includes/header.jsp" %>
+<%@ include file="includes/navbar.jsp" %>
 <body>
     <div class="container">
         <h2 class="text-center mt-5">Đơn hàng của tôi</h2>
@@ -35,5 +32,6 @@
             %>
         </table>
     </div>
+    <%@ include file="includes/footer.jsp" %>
 </body>
 </html>
