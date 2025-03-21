@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
-    // Lấy sản phẩm theo ID
+     // Lấy sản phẩm theo ID
     public static Product getProductById(int productId) {
         try (Connection conn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USER, DatabaseConfig.PASSWORD)) {
             String sql = "SELECT * FROM Products WHERE id = ?";
@@ -21,7 +21,8 @@ public class ProductDAO {
                     rs.getString("name"),
                     rs.getString("description"),
                     rs.getInt("quantity"),
-                    rs.getString("imageUrl")
+                    rs.getString("imageUrl"),
+                    rs.getDouble("price")
                 );
             }
         } catch (SQLException e) {
@@ -45,7 +46,8 @@ public class ProductDAO {
                     rs.getString("name"),
                     rs.getString("description"),
                     rs.getInt("quantity"),
-                    rs.getString("imageUrl")
+                    rs.getString("imageUrl"),
+                    rs.getDouble("price")
                 ));
             }
         } catch (SQLException e) {
@@ -70,7 +72,8 @@ public class ProductDAO {
                     rs.getString("name"),
                     rs.getString("description"),
                     rs.getInt("quantity"),
-                    rs.getString("imageUrl")
+                    rs.getString("imageUrl"),
+                    rs.getDouble("price")
                 ));
             }
         } catch (SQLException e) {
@@ -80,23 +83,25 @@ public class ProductDAO {
     }
 
     // Thêm sản phẩm mới
-    public static boolean addProduct(int sellerId, String name, String description, int quantity, String imageUrl) {
+    public static boolean addProduct(int sellerId, String name, String description, int quantity, String imageUrl, double price) {
         try (Connection conn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USER, DatabaseConfig.PASSWORD)) {
-            String sql = "INSERT INTO Products (sellerId, name, description, quantity, imageUrl) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Products (sellerId, name, description, quantity, imageUrl, price) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, sellerId);
             stmt.setString(2, name);
             stmt.setString(3, description);
             stmt.setInt(4, quantity);
             stmt.setString(5, imageUrl);
+            stmt.setDouble(6, price);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
-      // Cập nhật sản phẩm
-    public static boolean updateProduct(int productId, int sellerId, String name, String description, int quantity, String imageUrl) {
+
+    // Cập nhật sản phẩm
+    public static boolean updateProduct(int productId, int sellerId, String name, String description, int quantity, String imageUrl, double price) {
         try (Connection conn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USER, DatabaseConfig.PASSWORD)) {
             // Kiểm tra sản phẩm có thuộc về seller không
             String checkSql = "SELECT id FROM Products WHERE id = ? AND sellerId = ?";
@@ -110,13 +115,14 @@ public class ProductDAO {
             }
 
             // Cập nhật sản phẩm
-            String updateSql = "UPDATE Products SET name = ?, description = ?, quantity = ?, imageUrl = ? WHERE id = ?";
+            String updateSql = "UPDATE Products SET name = ?, description = ?, quantity = ?, imageUrl = ?, price = ? WHERE id = ?";
             PreparedStatement updateStmt = conn.prepareStatement(updateSql);
             updateStmt.setString(1, name);
             updateStmt.setString(2, description);
             updateStmt.setInt(3, quantity);
             updateStmt.setString(4, imageUrl);
-            updateStmt.setInt(5, productId);
+            updateStmt.setDouble(5, price);
+            updateStmt.setInt(6, productId);
 
             return updateStmt.executeUpdate() > 0;
         } catch (SQLException e) {

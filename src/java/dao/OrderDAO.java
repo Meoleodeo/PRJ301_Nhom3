@@ -23,6 +23,7 @@ public class OrderDAO {
                         rs.getInt("productId"),
                         rs.getInt("quantity"),
                         rs.getString("status"),
+                        rs.getString("paymentStatus"),
                         rs.getTimestamp("orderDate")
                 ));
             }
@@ -35,7 +36,7 @@ public class OrderDAO {
     // Đặt hàng
     public static boolean placeOrder(int buyerId, int productId, int quantity) {
         try (Connection conn = DatabaseConfig.getConnection()) {
-            String sql = "INSERT INTO Orders (buyerId, productId, quantity, status) VALUES (?, ?, ?, 'Pending')";
+            String sql = "INSERT INTO Orders (buyerId, productId, quantity, status, paymentStatus) VALUES (?, ?, ?, 'Pending', 'Unpaid')";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, buyerId);
             stmt.setInt(2, productId);
@@ -46,8 +47,8 @@ public class OrderDAO {
         }
         return false;
     }
-    // Lấy đơn hàng theo người bán
 
+    // Lấy đơn hàng theo người bán
     public static List<Order> getOrdersBySeller(int sellerId) {
         List<Order> orders = new ArrayList<>();
         try (Connection conn = DatabaseConfig.getConnection()) {
@@ -65,6 +66,7 @@ public class OrderDAO {
                         rs.getInt("productId"),
                         rs.getInt("quantity"),
                         rs.getString("status"),
+                        rs.getString("paymentStatus"),
                         rs.getTimestamp("orderDate")
                 ));
             }
@@ -73,8 +75,8 @@ public class OrderDAO {
         }
         return orders;
     }
-// Cập nhật trạng thái đơn hàng
-    
+
+    // Cập nhật trạng thái đơn hàng
     public static boolean updateOrderStatus(int orderId, String status) {
         try (Connection conn = DatabaseConfig.getConnection()) {
             String sql = "UPDATE Orders SET status = ? WHERE id = ?";
@@ -87,6 +89,18 @@ public class OrderDAO {
         }
         return false;
     }
-    
-    
+
+    // Cập nhật trạng thái thanh toán
+    public static boolean updatePaymentStatus(int orderId, String paymentStatus) {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            String sql = "UPDATE Orders SET paymentStatus = ? WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, paymentStatus);
+            stmt.setInt(2, orderId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -23,8 +23,9 @@ public class AddProductServlet extends HttpServlet {
         String description = request.getParameter("description");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String imageUrl = request.getParameter("imageUrl");
+        double price = Double.parseDouble(request.getParameter("price")); // Lấy giá sản phẩm
 
-        boolean success = ProductDAO.addProduct(user.getId(), name, description, quantity, imageUrl);
+        boolean success = ProductDAO.addProduct(user.getId(), name, description, quantity, imageUrl, price);
 
         if (success) {
             response.sendRedirect("dashboard.jsp");
