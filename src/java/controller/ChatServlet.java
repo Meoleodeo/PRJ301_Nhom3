@@ -14,6 +14,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import static controller.APIKey.GEMINI_API_KEY;
+import static dao.ProductDAO.getAllProducts;
+import java.util.List;
+import model.Product;
 
 public class ChatServlet extends HttpServlet {
 
@@ -22,7 +25,7 @@ public class ChatServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userMessage = request.getParameter("message");
-        String configMessage = "hãy tưởng tượng bạn là nhân viên của BlackShope (sàn thương mại điện tử); bạn chỉ việc trả lời chứ không cần phải mô tả một cuộc hội thoại với khách hàng. khi khác hỏi: " + userMessage + "bạn chỉ cần trả lời như 1 nhân viên ngầu lòi!";
+        String configMessage = setPromtForAI(userMessage); 
         userMessage =  configMessage;
         
         if (userMessage == null || userMessage.trim().isEmpty()) {
@@ -91,5 +94,15 @@ public class ChatServlet extends HttpServlet {
             e.printStackTrace();
             return "Lỗi khi phân tích phản hồi từ Gemini.";
         }
+    }
+    
+    private String setPromtForAI(String usermess){ 
+        List<Product> products = getAllProducts();
+        String promt ="hãy tưởng tượng bạn là nhân viên của BlackShope (sàn thương mại điện tử); bạn chỉ việc trả lời chứ không cần phải mô tả một cuộc hội thoại với khách hàng. bạn chỉ cần trả lời như 1 nhân viên ngầu lòi!, đây là danh sách sản phẩm của chúng tôi " ;
+        for (Product product : products) {
+            promt += product.toString();
+        }
+        promt +=  "và đây là câu thoại của khách: " + usermess ;
+       return promt;
     }
 }

@@ -7,6 +7,30 @@ import java.util.List;
 
 public class OrderDAO {
 
+    public static Order getOrderById(int id){
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            String sql = "SELECT * FROM Orders WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                return new Order(
+                        rs.getInt("id"),
+                        rs.getInt("buyerId"),
+                        rs.getInt("productId"),
+                        rs.getInt("quantity"),
+                        rs.getString("status"),
+                        rs.getString("paymentStatus"),
+                        rs.getTimestamp("orderDate")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     // Lấy đơn hàng theo người mua
     public static List<Order> getOrdersByBuyer(int buyerId) {
         List<Order> orders = new ArrayList<>();

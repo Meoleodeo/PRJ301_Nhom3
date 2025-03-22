@@ -21,6 +21,9 @@
                             <p class="card-text"><strong>Số lượng: </strong>
                                 <%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger'>Hết hàng</span>" %>
                             </p>
+                            <p class="card-text"><strong>price: </strong>
+                                <%= product.getPrice() %> $
+                            </p>
                             <% if (user != null && "buyer".equals(user.getRole())) { %>
                                 <form action="OrderServlet" method="post">
                                     <input type="hidden" name="productId" value="<%= product.getId() %>">

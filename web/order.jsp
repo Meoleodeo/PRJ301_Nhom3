@@ -13,6 +13,7 @@
                 <th>Trạng thái</th>
                 <th>Thanh toán</th> <!-- Thêm cột Thanh toán -->
                 <th>Ngày đặt</th>
+                <th>Hành động</th>
             </tr>
             <%
             
@@ -31,6 +32,16 @@
                         </span>
                     </td>
                     <td><%= order.getOrderDate() %></td>
+                    <td>
+                        <% if ("Unpaid".equals(order.getPaymentStatus())) { %>
+                            <form action="payOrder" method="post">
+                                <input type="hidden" name="orderId" value="<%= order.getOrderId() %>">
+                                <input type="hidden" name="productId" value="<%= order.getProductId() %>">
+                                <input type="hidden" name="buyerId" value="<%= user.getId() %>">
+                                <button type="submit" class="btn btn-primary">Thanh toán</button>
+                            </form>
+                        <% } %>
+                    </td>
                 </tr>
             <% 
                     }
