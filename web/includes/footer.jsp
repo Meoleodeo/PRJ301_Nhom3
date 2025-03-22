@@ -34,7 +34,7 @@
                 <h6 class="mb-2">Theo dõi chúng tôi</h6>
                 <div class="social-links small">
                     <a href="#" class="text-white text-decoration-none d-block mb-1">
-                        <img src="assets/image/icons/facebook.jpg" alt="Facebook" class="social-icon me-2">Facebook
+                        <i class="ti-facebook">Facebook</i>
                     </a>
                     <a href="#" class="text-white text-decoration-none d-block mb-1">
                         <img src="assets/image/icons/instagram.jpg" alt="Instagram" class="social-icon me-2">Instagram
@@ -84,3 +84,4 @@ footer hr {
     border-width: 0.5px; /* Đường phân cách mỏng hơn */
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

@@ -1,8 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.User" %>
 <%
     User user = (User) session.getAttribute("user");
 %>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-custom">
     <a class="navbar-brand" href="index.jsp">BlackShope</a>
     <a class="navbar-item" href="chat.jsp">Chat With AI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -13,19 +14,19 @@
             <% if (user != null) { %>
                 <li class="nav-item">
                     <span class="nav-link">
-                        Xin ch�o <strong><%= user.getUsername() %></strong> | S? d?: <strong><%= user.getBalance() %>$</strong>
+                        Xin chào <strong><%= user.getUsername() %></strong> | S? d?: <strong><%= user.getBalance() %>$</strong>
                     </span>
                 </li>
                 <% if ("buyer".equals(user.getRole())) { %>
-                    <li class="nav-item"><a class="nav-link" href="order.jsp">??n h�ng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="order.jsp">Đơn hàng</a></li>
                 <% } else { %>
-                    <li class="nav-item"><a class="nav-link" href="dashboard.jsp">Qu?n l� s?n ph?m</a></li>
-                    <li class="nav-item"><a class="nav-link" href="managerOrders.jsp">Qu?n l� ??n h�ng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.jsp">Quản lý sản phẩm </a></li>
+                    <li class="nav-item"><a class="nav-link" href="managerOrders.jsp">Quản lý bán hàng</a></li>
                 <% } %>
-                <li class="nav-item"><a class="nav-link" href="LogoutServlet">??ng xu?t</a></li>
+                    <li class="nav-item"><a class="nav-link" href="LogoutServlet">Đăng xuất</a></li>
             <% } else { %>
-                <li class="nav-item"><a class="nav-link" href="login.jsp">??ng nh?p</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.jsp">??ng k�</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.jsp">Đăng nhập</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.jsp">Đăng kí</a></li>
             <% } %>
         </ul>
     </div>

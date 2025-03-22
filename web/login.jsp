@@ -1,10 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="includes/header.jsp" %>
-<%@ include file="includes/navbar.jsp" %>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackShope</title>
+    <link rel="stylesheet" href="assets/css/stylelogin.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
 <body class="login">
-    <div class="container container-login">
+    <div class="container title">
+        <a href="index.jsp"><p>BlackShope</p></a>
+    </div>
+    <div class="container1 container-login">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-6 form-login">
                 <h2 class="text-center mt-5 container-h2">Đăng nhập</h2>
                 <% if (request.getAttribute("error") != null) { %>
                     <div class="alert alert-danger"><%= request.getAttribute("error") %></div>
@@ -21,7 +29,6 @@
                     <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
                 </form>
                 <p class="text-center mt-3">
-                    <a href="forgotPassword.jsp">Quên mật khẩu?</a> |
                     <a href="register.jsp">Đăng ký</a>
                 </p>
             </div>

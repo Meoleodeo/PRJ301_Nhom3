@@ -4,7 +4,31 @@
 <%@ page import="dao.ProductDAO, model.Product, java.util.List" %>
 
 <body>
-    <div class="container">
+    <!-- <div class="slider">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner ">
+              <div class="carousel-item active">
+                <img src="https://www.bing.com/th?id=OIP.n2J-te2edVD91F8w6udMmgHaHa&w=206&h=206&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item active">
+                <img src="https://www.bing.com/th?id=OIP.h_REyr4IhtYw-7Zk-aJeLQHaE8&w=144&h=100&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item active">
+                <img src="https://www.bing.com/th?id=OIP.xqYunaXLEIiIBgbHGncjBQHaHa&w=93&h=104&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div> -->
+
+    <div class="container content">
         <h2 class="text-center mt-5">Danh sách sản phẩm</h2>
         <div class="row">
             <%
