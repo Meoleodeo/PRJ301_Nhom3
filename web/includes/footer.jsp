@@ -14,7 +14,7 @@
             <div class="col-md-3 mb-3">
                 <h6 class="mb-2">Liên kết hữu ích</h6>
                 <ul class="list-unstyled small">
-                    <li><a href="#" class="text-white text-decoration-none">Trang chủ</a></li>
+                    <li><a href="http://localhost:8080/BlackShope/" class="text-white text-decoration-none">Trang chủ</a></li>
                     <li><a href="#" class="text-white text-decoration-none">Sản phẩm</a></li>
                     <li><a href="#" class="text-white text-decoration-none">Chính sách bảo mật</a></li>
                     <li><a href="#" class="text-white text-decoration-none">Hỗ trợ khách hàng</a></li>
@@ -34,13 +34,13 @@
                 <h6 class="mb-2">Theo dõi chúng tôi</h6>
                 <div class="social-links small">
                     <a href="#" class="text-white text-decoration-none d-block mb-1">
-                        <img src="assets/image/icons/facebook.jpg" alt="Facebook" class="social-icon me-2">Facebook
+                        <img src="assets/image/icons/fb.jpg" alt="Facebook" class="social-icon me-2">Facebook
                     </a>
                     <a href="#" class="text-white text-decoration-none d-block mb-1">
-                        <img src="assets/image/icons/instagram.jpg" alt="Instagram" class="social-icon me-2">Instagram
+                        <img src="assets/image/icons/insta.jpg" alt="Instagram" class="social-icon me-2">Instagram
                     </a>
                     <a href="#" class="text-white text-decoration-none d-block">
-                        <img src="assets/image/icons/tiktok.jpg" alt="Twitter" class="social-icon me-2">Tiktok
+                        <img src="assets/image/icons/tik-tok.jpg" alt="Tiktok" class="social-icon me-2">Tiktok
                     </a>
                 </div>
             </div>
@@ -66,7 +66,7 @@ footer h6 {
 }
 
 footer .small {
-    line-height: 1.4; /* Giảm khoảng cách dòng */
+    line-height: 1.5; /* Giảm khoảng cách dòng */
 }
 
 footer .social-links a:hover {
