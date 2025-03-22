@@ -6,7 +6,9 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String role; // "buyer" hoặc "seller"
+    private String role;
+    private long cardNumber;
+    private int balance;
 
     public User(int id, String username, String password, String email, String role) {
         this.id = id;
@@ -15,6 +17,27 @@ public class User {
         this.email = email;
         this.role = role;
     }
+
+    public User() {
+    }
+
+    public long getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(long cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+    
+    
 
     // Getter và Setter
     public int getId() {

@@ -22,7 +22,7 @@ public class ChatServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userMessage = request.getParameter("message");
-        String configMessage = "hãy tưởng tượng bạn là nhân viên của BlackShope (sàn thương mại điện tử); sau đây sẽ là cuộc hội thoại của bạn với khách hàng. khi khác hỏi: " + userMessage + "bạn chỉ cần trả lời như 1 nhân viên ngầu lòi!";
+        String configMessage = "hãy tưởng tượng bạn là nhân viên của BlackShope (sàn thương mại điện tử); bạn chỉ việc trả lời chứ không cần phải mô tả một cuộc hội thoại với khách hàng. khi khác hỏi: " + userMessage + "bạn chỉ cần trả lời như 1 nhân viên ngầu lòi!";
         userMessage =  configMessage;
         
         if (userMessage == null || userMessage.trim().isEmpty()) {

@@ -20,6 +20,9 @@
         %>
 
     </div>
+        <div class="container">
+            <a class="btn btn-outline-info" href="order.jsp" role="button">View your order</a>
+        </div>
     <%@ include file="includes/footer.jsp" %>
 </body>
 </html>

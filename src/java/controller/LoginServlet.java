@@ -16,8 +16,9 @@ public class LoginServlet extends HttpServlet {
 
         User user = UserDAO.getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
+            User fullUser = UserDAO.getUserWithBalance(username);
             HttpSession session = request.getSession();
-            session.setAttribute("user", user);
+            session.setAttribute("user", fullUser);
 
             if ("buyer".equals(user.getRole())) {
                 response.sendRedirect("index.jsp");

@@ -31,14 +31,15 @@ public class UserDAO {
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
     public static boolean registerUser(User user) {
-        String sql = "INSERT INTO Users (username, password, email, role) VALUES (?, ?, ?, ?)";
+        String sql = "{CALL AddUserWithCard(?, ?, ?, ?, ?)}";
 
-        try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DatabaseConfig.getConnection(); CallableStatement stmt = conn.prepareCall(sql)) {
 
             stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPassword()); // Lưu mật khẩu trực tiếp
+            stmt.setString(2, user.getPassword());  // Bạn có thể hash nếu cần
             stmt.setString(3, user.getEmail());
             stmt.setString(4, user.getRole());
+            stmt.setInt(5, 1000); // Số dư mặc định cho thẻ
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -82,4 +83,29 @@ public class UserDAO {
         }
         return false;
     }
+
+    public static User getUserWithBalance(String username) {
+        String sql = "SELECT u.id, u.username, u.role, c.blance "
+                + "FROM Users u JOIN Cards c ON u.cardNumber = c.cardNumber "
+                + "WHERE u.username = ?";
+
+        try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setRole(rs.getString("role"));
+                user.setBalance(rs.getInt("blance"));  
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

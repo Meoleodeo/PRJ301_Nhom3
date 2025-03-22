@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="includes/header.jsp" %>
-<%@ include file="includes/navbar.jsp" %>
 <body class="login">
     <div class="container container-login">
         <div class="row justify-content-center">
@@ -27,6 +26,5 @@
             </div>
         </div>
     </div>
-    <%@ include file="includes/footer.jsp" %>
 </body>
 </html>
