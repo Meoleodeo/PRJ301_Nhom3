@@ -2,10 +2,10 @@ CREATE TABLE Cards (
     cardNumber BIGINT PRIMARY KEY,
     blance INT NOT NULL
 );
-
+go
 ALTER TABLE Users
 ADD cardNumber BIGINT
-
+go
 ALTER TABLE Users
 ADD FOREIGN KEY (cardNumber) REFERENCES Cards(cardNumber);
 
@@ -40,10 +40,6 @@ BEGIN
     VALUES (@username, @password, @email, @cardNumber, @role);
 END;
 
-INSERT INTO Cards (cardNumber, blance)
-VALUES (100000002, 0),
-(1000000003, 0),
-(1000000004, 0)
 
 CREATE TABLE TransferHistory (
     id INT IDENTITY(1,1) PRIMARY KEY,
