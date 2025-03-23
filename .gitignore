@@ -28,5 +28,9 @@ src/java/controller/APIKey.java
 nbproject/private/private.properties
 /nbproject/private/private.xml
 /dist
+<<<<<<< HEAD
 /build
 /nbbuild
+=======
+/nbproject/private/
+>>>>>>> 2fb8e0c (push before pull)
