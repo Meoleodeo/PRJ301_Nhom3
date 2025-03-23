@@ -1,0 +1,45 @@
+/* CSS hiện có của bạn */
+footer {
+    font-size: 14px; /* Giảm kích thước chữ tổng thể */
+}
+
+footer h6 {
+    font-size: 16px; /* Tiêu đề nhỏ hơn */
+    font-weight: 600;
+}
+
+footer .small {
+    line-height: 1.4; /* Giảm khoảng cách dòng */
+}
+
+footer .social-links a:hover {
+    color: #e25555; /* Hiệu ứng hover cho liên kết mạng xã hội */
+    transition: color 0.3s ease;
+}
+
+footer .social-icon {
+    width: 20px; /* Kích thước icon */
+    height: 20px;
+    vertical-align: middle; /* Căn giữa icon với text */
+}
+
+footer hr {
+    border-width: 0.5px; /* Đường phân cách mỏng hơn */
+}
+
+/* CSS để ghim footer */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto; /* Đẩy footer xuống dưới cùng */
+}

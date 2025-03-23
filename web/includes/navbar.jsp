@@ -14,7 +14,7 @@
             <% if (user != null) { %>
                 <li class="nav-item">
                     <span class="nav-link">
-                        Xin chào <strong><%= user.getUsername() %></strong> | S? d?: <strong><%= user.getBalance() %>$</strong>
+                        Xin chào <strong><%= user.getUsername() %></strong> | Số dư: <strong><%= user.getBalance() %>$</strong>
                     </span>
                 </li>
                 <% if ("buyer".equals(user.getRole())) { %>
