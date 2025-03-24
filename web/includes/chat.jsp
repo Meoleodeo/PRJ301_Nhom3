@@ -1,16 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <body>
-<<<<<<< HEAD:web/chat.jsp
-    <div class="container">
-        <h2 class="text-center mt-4">Chat với AI (Gemini)</h2>
-        <div id="chatbox" class="border p-3 rounded mt-3" style="height: 400px; overflow-y: auto; background-color: #f8f9fa; max-width: 100%; word-wrap: break-word;"></div>
-        <div class="mt-3">
-            <form id="chatForm">
-                <input type="text" id="message" name="message" class="form-control" placeholder="Nhập câu hỏi..." required />
-                <button type="submit" class="btn btn-primary mt-2">Gửi</button>
-            </form>
-=======
+
     <div class="chat-container">
         <!-- Nút mở chatbox -->
         <div class="chat-toggle-btn click" onclick="toggleChat()">💬 Chat</div>
@@ -28,7 +19,7 @@
                     <button type="submit" class="btn btn-send">Gửi</button>
                 </form>
             </div>
->>>>>>> t:web/includes/chat.jsp
+
         </div>
     </div>
 
@@ -68,12 +59,8 @@
 
                 let aiDiv = document.createElement('div');
                 aiDiv.className = 'text-left text-success';
-<<<<<<< HEAD:web/chat.jsp
-                aiDiv.textContent = 'AI: ' + reply; // Sử dụng textContent
-                aiDiv.style.whiteSpace = 'pre-wrap'; // Ensure long messages wrap within the chatbox
-=======
                 aiDiv.textContent = reply; // Sử dụng textContent
->>>>>>> t:web/includes/chat.jsp
+
                 console.log(reply);
                 chatbox.appendChild(aiDiv);
 
