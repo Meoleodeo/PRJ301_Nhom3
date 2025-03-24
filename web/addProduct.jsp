@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="includes/header.jsp" %>
 <head>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlackShope</title>
     <link rel="stylesheet" href="assets/css/style-addProduct.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
 </head>
 <div class="container mt-4">
     <div class="container title">
