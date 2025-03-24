@@ -25,23 +25,31 @@
                     List<Product> products = ProductDAO.getProductsBySeller(user.getId());
                     for (Product product : products) {
             %>
-                <tr class="product-table-row">
-                    <td><%= product.getId() %></td>
-                    <td><%= product.getName() %></td>
-                    <td><%= product.getDescription() %></td>
-                    <td><%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger product-out-of-stock'>Hết hàng</span>" %></td>
-                    <td><%= String.format("%,.2f", product.getPrice()) %> VNĐ</td> 
-                    <td>
-                        <a href="editProduct.jsp?id=<%= product.getId() %>" class="btn btn-warning product-edit-btn">Sửa</a>
-                        <a href="#" onclick="confirmDelete(<%= product.getId() %>)" class="btn btn-danger product-delete-btn">Xóa</a>
-                    </td>
-                </tr>
-            <% 
+            <tr class="product-table-row">
+                <td><%= product.getId()%></td>
+                <td><%= product.getName()%></td>
+                <td><%= product.getDescription()%></td>
+                <td><%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger product-out-of-stock'>Hết hàng</span>"%></td>
+                <td><%= String.format("%,.2f", product.getPrice())%> $</td> 
+                <td>
+                    <a href="editProduct.jsp?id=<%= product.getId()%>" class="btn btn-warning product-edit-btn">Sửa</a>
+                    <a href="#" onclick="confirmDelete(<%= product.getId()%>)" class="btn btn-danger product-delete-btn">Xóa</a>
+                </td>
+            </tr>
+            <%
                     }
-                } 
+                }
             %>
         </table>
     </div>
     <%@ include file="includes/footer.jsp" %>
+    <script>
+        function confirmDelete(productId) {
+            if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+                window.location.href = "DeleteProductServlet?id=" + productId;
+            }
+        }
+    </script>
+
 </body>
 </html>
