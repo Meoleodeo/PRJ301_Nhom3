@@ -1,124 +1,100 @@
 # BlackShope - Java Web Project
 
-##  Giới thiệu
-BlackShope là một ứng dụng web bán hàng trực tuyến được xây dựng bằng **Java Servlet/JSP**, sử dụng **Apache Tomcat** và kết nối với **SQL Server**. Ứng dụng hỗ trợ **người mua** và **người bán**, cho phép đăng ký, đăng nhập, quản lý sản phẩm, đặt hàng, và quản lý đơn hàng.
+##  Decription:
+BlackShope is an e-commerce web application built with Java Servlet/JSP, running on Apache Tomcat, and integrated with SQL Server. The platform supports both buyers and sellers: [do it.](#main-fearture)
 
-## Công nghệ sử dụng
-- **Ngôn ngữ**: Java (Servlet/JSP)
-- **Cơ sở dữ liệu**: Microsoft SQL Server
-- **Máy chủ ứng dụng**: Apache Tomcat
-- **Giao diện**: Bootstrap, HTML, CSS
-- **Kết nối CSDL**: JDBC
+### Pleas read docs before working: [here.](https://github.com/Meoleodeo/PRJ301_Nhom3/blob/main/docs/)
 
-template boostrap:
-```bash
-git clone https://github.com/startbootstrap/startbootstrap-shop-homepage
-```
-### erd db at: [here](https://dbdiagram.io/d/PRJ301_Nhom3-67cb213d263d6cf9a09dfb71)
+### Erd db at: [here.](https://dbdiagram.io/d/PRJ301_Nhom3-67cb213d263d6cf9a09dfb71)
 
-### to clone prj:
+### Work flow at: [here.](https://trello.com/b/cFKPxPlx/projectnhom3)
+
+### To clone prj:
 ```bash
 git clone https://github.com/Meoleodeo/PRJ301_Nhom3
 ```
-### to pull:
-```bash
-git pull https://github.com/Meoleodeo/PRJ301_Nhom3
-```
-### to push:
-```bash
-git add .
-git commit -m "ur mesg"
-git push
-```
-more at : `docs/git-lifecycle.md`
-
-## set up 
-### script: [here](https://github.com/Meoleodeo/PRJ301_Nhom3/blob/main/db/setupDbBlackShope.sql)
-### DatabaseConfig:
-```java
-package dao;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-public class DatabaseConfig {
-     public static String DRIVERNAME="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static String URL="jdbc:sqlserver://127.0.0.1:urPort;databaseName=BlackShope;encrypt=true;trustServerCertificate=true;loginTimeout=30;";
-    public static String USER="urUName";
-    public static String PASSWORD="urPass";
-     public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName(DRIVERNAME);
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("SQL Server JDBC Driver not found", e);
-        }
-    }
-    // main test
-     public static void main(String[] args) {
-         try {
-             getConnection();
-         } catch (SQLException ex) {
-             Logger.getLogger(DatabaseConfig.class.getName()).log(Level.SEVERE, null, ex);
-         }
-    }
-}
-```
-
-
-## Cấu trúc thư mục
+## Folder Structer:
 ```
 BlackShope/
-│── src/
-│   ├── controller/   # Servlets xử lý logic
-│   ├── dao/          # Data Access Object (DAO)
-│   ├── model/        # Lớp dữ liệu
-│   ├── config/       # Cấu hình database
-│── WebContent/
-│   ├── assets/       # CSS, JS, hình ảnh
-│   ├── includes/     # Navbar, Footer, Header
-│   ├── index.jsp     # Trang chủ
-│   ├── login.jsp     # Đăng nhập
-│   ├── register.jsp  # Đăng ký
-│   ├── dashboard.jsp # Trang quản lý của người bán
-│   ├── order.jsp     # Danh sách đơn hàng của người mua
-│── web.xml           # Cấu hình Servlet
-│── README.md         # Hướng dẫn sử dụng
+├───build
+│   ├───empty
+│   ├───generated-sources
+│   │   └───ap-source-output
+│   └───web
+│       ├───assets
+│       │   ├───css
+│       │   ├───image
+│       │   │   ├───banner
+│       │   │   └───product
+│       │   └───themify-icons
+│       │       ├───demo-files
+│       │       ├───fonts
+│       │       └───SVG
+│       ├───includes
+│       ├───META-INF
+│       └───WEB-INF
+│           ├───classes
+│           │   ├───controller
+│           │   ├───dao
+│           │   └───model
+│           ├───lib
+│           └───tlds
+├───chatgpt
+│   └───__pycache__
+├───db
+├───dist
+├───docs
+├───nbproject
+│   └───private
+├───src
+│   ├───conf
+│   └───java
+│       ├───controller
+│       ├───dao
+│       └───model
+├───test
+└───web
+    ├───assets
+    │   ├───css
+    │   ├───image
+    │   │   ├───banner
+    │   │   └───product
+    │   └───themify-icons
+    │       ├───demo-files
+    │       ├───fonts
+    │       └───SVG
+    ├───includes
+    ├───META-INF
+    └───WEB-INF
+        └───tlds
 ```
 
-## 🛠 Cài đặt và chạy dự án
-### 1️ Cấu hình database
-- Tạo cơ sở dữ liệu `BlackShope` trong SQL Server.
-- Chạy file `setupDbBlackShope.sql` để tạo bảng và thêm dữ liệu mẫu.
+## Setup and Running:
+### 1️ Generate Database:
+script: [here](https://github.com/Meoleodeo/PRJ301_Nhom3/blob/main/db/)
 
-### 2️ Cấu hình `DatabaseConfig.java`
-Cập nhật thông tin kết nối trong `config/DatabaseConfig.java`:
-```java
-public static String URL = "jdbc:sqlserver://127.0.0.1:1434;databaseName=BlackShope;encrypt=false;";
-public static String USER = "sa";
-public static String PASSWORD = "your_password";
-```
+### 2️ Config `DatabaseConfig.java`
 
-### 3️ Chạy ứng dụng
-- Mở **Apache Tomcat** (phiên bản 9 trở lên).
-- Triển khai ứng dụng trên Tomcat.
-- Truy cập `http://localhost:8080/BlackShope/`.
+### 3️ Build:
+- Open **Apache Tomcat** (phiên bản 9 trở lên).
+- Deploy on Tomcat.
+- curl `http://localhost:8080/BlackShope/`.
 
-## Các tài khoản mẫu
-| Loại tài khoản | Username  | Mật khẩu   |
+## Account samples:
+| role | Username  | Mật khẩu   |
 |---------------|-----------|------------|
-| Người mua    | buyer1    | password123 |
-| Người bán    | seller1   | password123 |
+| buyer    | buyer1    | password123 |
+| seller    | seller1   | password123 |
 
-## Chức năng chính
-### Người mua (Buyer)
-- Đăng ký, đăng nhập, đăng xuất.
-- Xem danh sách sản phẩm.
-- Đặt hàng và quản lý đơn hàng.
-
-### Người bán (Seller)
-- Quản lý sản phẩm (thêm, sửa, xóa).
-- Quản lý đơn hàng của khách.
+## Main Fearture
+- Chat with AI.
+- Login, Logout, Register,...
+### Buyer
+- View Products List.
+- Order and manager Order (add, remove).
+- Payment.
+### Seller
+- Manager Products (add, remove, update).
+- View Order (any product of self.seller).
+- Manager Order (update status).
+- Update Later.
