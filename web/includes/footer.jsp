@@ -1,87 +1,52 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<footer class="bg-dark text-white p-4 mt-5">
-    <div class="container">
-        <div class="row align-items-start">
-            <!-- Cột 1: Thông tin công ty -->
-            <div class="col-md-3 mb-3">
-                <h6 class="mb-2">BlackShope</h6>
-                <p class="small mb-1">Mua sắm dễ dàng, bán hàng tiện lợi.</p>
-                <p class="small mb-0">© 2025 BlackShope. All Rights Reserved.</p>
-            </div>
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <!-- Cột 1: Thông tin công ty -->
+                <div class="col">
+                    <h6>BlackShope</h6>
+                    <p>Mua sắm dễ dàng, bán hàng tiện lợi.</p>
+                    <p>© 2025 BlackShope. All Rights Reserved.</p>
+                </div>
+                <!-- Cột 3: Liên hệ -->
+                <div class="col">
+                    <h6>Liên hệ</h6>
+                    <p>Email: support@blackshope.com</p>
+                    <p>Hotline: 1800 1010</p>
+                    <p>Đại học FPT Campus Đà Nẵng</p>
+                </div>
 
-            <!-- Cột 2: Liên kết hữu ích -->
-            <div class="col-md-3 mb-3">
-                <h6 class="mb-2">Liên kết hữu ích</h6>
-                <ul class="list-unstyled small">
-                    <li><a href="#" class="text-white text-decoration-none">Trang chủ</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Sản phẩm</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Chính sách bảo mật</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Hỗ trợ khách hàng</a></li>
-                </ul>
-            </div>
-
-            <!-- Cột 3: Liên hệ -->
-            <div class="col-md-3 mb-3">
-                <h6 class="mb-2">Liên hệ</h6>
-                <p class="small mb-1">Email: support@blackshope.com</p>
-                <p class="small mb-1">Hotline: 1800 1010</p>
-                <p class="small mb-0">Đại học FPT Campus Đà Nẵng</p>
-            </div>
-
-            <!-- Cột 4: Mạng xã hội -->
-            <div class="col-md-3 mb-3">
-                <h6 class="mb-2">Theo dõi chúng tôi</h6>
-                <div class="social-links small">
-                    <a href="#" class="text-white text-decoration-none d-block mb-1">
-                        <i class="ti-facebook">Facebook</i>
-                    </a>
-                    <a href="#" class="text-white text-decoration-none d-block mb-1">
-                        <img src="assets/image/icons/instagram.jpg" alt="Instagram" class="social-icon me-2">Instagram
-                    </a>
-                    <a href="#" class="text-white text-decoration-none d-block">
-                        <img src="assets/image/icons/tiktok.jpg" alt="Twitter" class="social-icon me-2">Tiktok
-                    </a>
+                <!-- Cột 4: Mạng xã hội -->
+                <div class="col social">
+                    <h6>Theo dõi chúng tôi</h6>
+                    <a href="https://www.facebook.com/"><i class="ti-facebook"></i> Facebook</a>
+                    <a href="https://www.instagram.com/"><i class="ti-instagram"></i> Instagram</a>
+                    <a href="https://x.com/?lang=en"><i class="ti-twitter"></i> Twitter</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Đường phân cách và bản quyền -->
-        <hr class="bg-white my-3">
-        <div class="text-center">
-            <p class="small mb-0">Designed with <span style="color: #e25555;">♥</span> by BlackShope Team</p>
+    <!-- Phần bản quyền ở dưới cùng -->
+    <div class="footer-bottom">
+        <div class="container text-center">
+            <p>Designed with <span>♥</span> by BlackShope Team</p>
         </div>
     </div>
 </footer>
+<script>
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        let currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.querySelector(".navbar-custom").classList.remove("hidden-navbar");
+        } else {
+            document.querySelector(".navbar-custom").classList.add("hidden-navbar");
+        }
+        prevScrollpos = currentScrollPos;
+    }
+</script>
 
-<!-- CSS tùy chỉnh -->
-<style>
-footer {
-    font-size: 14px; /* Giảm kích thước chữ tổng thể */
-}
-
-footer h6 {
-    font-size: 16px; /* Tiêu đề nhỏ hơn */
-    font-weight: 600;
-}
-
-footer .small {
-    line-height: 1.4; /* Giảm khoảng cách dòng */
-}
-
-footer .social-links a:hover {
-    color: #e25555; /* Hiệu ứng hover cho liên kết mạng xã hội */
-    transition: color 0.3s ease;
-}
-
-footer .social-icon {
-    width: 20px; /* Kích thước icon */
-    height: 20px;
-    vertical-align: middle; /* Căn giữa icon với text */
-}
-
-footer hr {
-    border-width: 0.5px; /* Đường phân cách mỏng hơn */
-}
-</style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

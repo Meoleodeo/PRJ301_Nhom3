@@ -88,6 +88,7 @@
             </div>
         </div>
     </div>
+    <%@ include file="includes/chat.jsp" %>
     <%@ include file="includes/footer.jsp" %>
 
     <!-- Chatbox Interface -->
