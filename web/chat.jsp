@@ -5,7 +5,7 @@
 <body>
     <div class="container">
         <h2 class="text-center mt-4">Chat với AI (Gemini)</h2>
-        <div id="chatbox" class="border p-3 rounded mt-3" style="height: 400px; overflow-y: auto;"></div>
+        <div id="chatbox" class="border p-3 rounded mt-3" style="height: 400px; overflow-y: auto; background-color: #f8f9fa; max-width: 100%; word-wrap: break-word;"></div>
         <div class="mt-3">
             <form id="chatForm">
                 <input type="text" id="message" name="message" class="form-control" placeholder="Nhập câu hỏi..." required />
@@ -47,6 +47,7 @@
                 let aiDiv = document.createElement('div');
                 aiDiv.className = 'text-left text-success';
                 aiDiv.textContent = 'AI: ' + reply; // Sử dụng textContent
+                aiDiv.style.whiteSpace = 'pre-wrap'; // Ensure long messages wrap within the chatbox
                 console.log(reply);
                 chatbox.appendChild(aiDiv);
 
@@ -58,6 +59,7 @@
                 let errorDiv = document.createElement('div');
                 errorDiv.className = 'text-left text-danger';
                 errorDiv.textContent = `Lỗi AI: ${error.message || 'Có lỗi xảy ra.'}`; // Sử dụng textContent
+                errorDiv.style.whiteSpace = 'pre-wrap'; // Ensure long messages wrap within the chatbox
                 chatbox.appendChild(errorDiv);
 
                 chatbox.scrollTop = chatbox.scrollHeight;

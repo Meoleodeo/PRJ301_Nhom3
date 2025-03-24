@@ -98,11 +98,11 @@ public class ChatServlet extends HttpServlet {
     
     private String setPromtForAI(String usermess){ 
         List<Product> products = getAllProducts();
-        String promt ="hãy tưởng tượng bạn là nhân viên của BlackShope (sàn thương mại điện tử); bạn chỉ việc trả lời chứ không cần phải mô tả một cuộc hội thoại với khách hàng. bạn chỉ cần trả lời như 1 nhân viên ngầu lòi!, đây là danh sách sản phẩm của chúng tôi " ;
+        String promt = "Bạn là nhân viên chăm sóc khách hàng chuyên nghiệp của BlackShope tên là MaoMao, một sàn thương mại điện tử hàng đầu. Hãy trả lời khách hàng một cách lịch sự, chuyên nghiệp và hữu ích nhất và lưu ý là trả lời ngắn gọi, chỉ trả lời đúng yêu cầu của khách hàng không trả lời dài, lang mang. Đây là danh sách sản phẩm của chúng tôi: ";
         for (Product product : products) {
-            promt += product.toString();
+            promt += product.toString() + "; ";
         }
-        promt +=  "và đây là câu thoại của khách: " + usermess ;
-       return promt;
+        promt += "Và đây là câu hỏi của khách hàng: " + usermess;
+        return promt;
     }
 }

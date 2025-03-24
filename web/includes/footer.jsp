@@ -7,7 +7,7 @@
             <div class="col-md-3 mb-3">
                 <h6 class="mb-2">BlackShope</h6>
                 <p class="small mb-1">Mua sắm dễ dàng, bán hàng tiện lợi.</p>
-                <p class="small mb-0">© 2024 BlackShope. All Rights Reserved.</p>
+                <p class="small mb-0">© 2025 BlackShope. All Rights Reserved.</p>
             </div>
 
             <!-- Cột 2: Liên kết hữu ích -->
