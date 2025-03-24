@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <body>
-
     <div class="chat-container">
         <!-- Nút mở chatbox -->
         <div class="chat-toggle-btn click" onclick="toggleChat()">💬 Chat</div>
@@ -19,7 +18,6 @@
                     <button type="submit" class="btn btn-send">Gửi</button>
                 </form>
             </div>
-
         </div>
     </div>
 
@@ -60,7 +58,6 @@
                 let aiDiv = document.createElement('div');
                 aiDiv.className = 'text-left text-success';
                 aiDiv.textContent = reply; // Sử dụng textContent
-
                 console.log(reply);
                 chatbox.appendChild(aiDiv);
 
@@ -72,7 +69,6 @@
                 let errorDiv = document.createElement('div');
                 errorDiv.className = 'text-left text-danger';
                 errorDiv.textContent = `Lỗi AI: ${error.message || 'Có lỗi xảy ra.'}`; // Sử dụng textContent
-                errorDiv.style.whiteSpace = 'pre-wrap'; // Ensure long messages wrap within the chatbox
                 chatbox.appendChild(errorDiv);
 
                 chatbox.scrollTop = chatbox.scrollHeight;
