@@ -6,7 +6,7 @@
         <div class="chat-toggle-btn click" onclick="toggleChat()">💬 Chat</div>
 
         <!-- Hộp chat -->
-        <div class="chat-box" id="chatBox">
+        <div class="chat-box slide-in-bck-bottom" id="chatBox">
             <div class="chat-box-header" onclick="toggleChat()">
                 Chat với AI  
                 <span class="close-chat">✖</span>

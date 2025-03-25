@@ -26,6 +26,10 @@
                         <label class="container-label">Mật khẩu:</label>
                         <input type="password" class="form-control" name="password" required>
                     </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" name="savePass" id="savePass" style="width: 1%;">
+        <label class="form-check-label" for="savePass" style="padding: 0;">  Lưu mật khẩu</label>
+                    </div>
                     <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
                 </form>
                 <p class="text-center mt-3">

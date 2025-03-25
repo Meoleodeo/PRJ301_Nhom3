@@ -24,18 +24,18 @@
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+
         </a>
         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+
         </a>
     </div>
 
     <div class="container content">
         <div class="row">
             <div class="col-md-3">
-                <h3 class="my-4">Danh mục sản phẩm</h3>
+                <h3 class="my-4" style="color: #F4B315;">Danh mục sản phẩm</h3>
                 <div class="list-group">
                     <a href="index.jsp" class="list-group-item list-group-item-action">Tất cả sản phẩm</a>
                     <a href="?category=SD" class="list-group-item list-group-item-action">Mô hình SD</a>
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <h2 class="text-center mt-5">Danh sách sản phẩm</h2>
+                <h2 class="text-center mt-5" style="color: #F4B315;">Danh sách sản phẩm</h2>
                 <div class="row">
                     <%
                         String category = request.getParameter("category");
@@ -70,14 +70,14 @@
                                 <p class="card-text"><strong>Số lượng: </strong>
                                     <%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger'>Hết hàng</span>" %>
                                 </p>
-                                <p class="card-text"><strong>price: </strong>
+                                <p class="card-text"><strong>Price: </strong>
                                     <%= product.getPrice() %> $
                                 </p>
                                 <% if (user != null && "buyer".equals(user.getRole())) { %>
                                     <form action="OrderServlet" method="post">
                                         <input type="hidden" name="productId" value="<%= product.getId() %>">
                                         <input type="number" name="quantity" min="1" max="<%= product.getQuantity() %>" required class="form-control mb-2">
-                                        <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                                        <button type="submit" class="btn btn-primary order-btn">Đặt hàng</button>
                                     </form>
                                 <% } %>
                             </div>
