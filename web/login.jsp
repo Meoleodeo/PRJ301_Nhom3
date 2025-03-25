@@ -29,7 +29,7 @@
                     <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
                 </form>
                 <p class="text-center mt-3">
-                    <a href="register.jsp">Đăng ký</a>
+                    <a href="RegisterServlet">Đăng ký</a>
                 </p>
             </div>
         </div>

@@ -84,28 +84,6 @@ public class UserDAO {
         return false;
     }
 
-    public static User getUserWithBalance(String username) {
-        String sql = "SELECT u.id, u.username, u.role, c.blance "
-                + "FROM Users u JOIN Cards c ON u.cardNumber = c.cardNumber "
-                + "WHERE u.username = ?";
-
-        try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, username);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setUsername(rs.getString("username"));
-                user.setRole(rs.getString("role"));
-                user.setBalance(rs.getInt("blance"));  
-                return user;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+    
 
 }

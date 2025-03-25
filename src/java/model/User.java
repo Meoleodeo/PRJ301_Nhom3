@@ -8,7 +8,6 @@ public class User {
     private String email;
     private String role;
     private long cardNumber;
-    private int balance;
 
     public User(int id, String username, String password, String email, String role) {
         this.id = id;
@@ -28,17 +27,7 @@ public class User {
     public void setCardNumber(long cardNumber) {
         this.cardNumber = cardNumber;
     }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
     
-    
-
     // Getter và Setter
     public int getId() {
         return id;

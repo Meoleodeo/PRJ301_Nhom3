@@ -22,7 +22,7 @@
 
     </div>
         <div class="container order-page-wrapper">
-            <a class="btn btn-outline-info order-btn" href="order.jsp" role="button">View your order</a>
+            <a class="btn btn-outline-info order-btn" href="OrderServlet" role="button">View your order</a>
         </div>
     </div>   
     <%@ include file="includes/footer.jsp" %>

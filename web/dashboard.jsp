@@ -7,7 +7,7 @@
     <div class="container product-manage-wrapper">
         <h2 class="text-center mt-5 product-manage-title">Quản lý sản phẩm</h2>
         <div class="d-flex justify-content-between mb-3 product-manage-actions">
-            <a href="addProduct.jsp" class="btn btn-success product-add-btn">+ Thêm sản phẩm</a>
+            <a href="AddProductServlet" class="btn btn-success product-add-btn">+ Thêm sản phẩm</a>
             <a href="ManageOrdersServlet" class="btn btn-primary product-order-btn">Quản lý đơn hàng</a>
         </div>
 
@@ -32,7 +32,7 @@
                 <td><%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger product-out-of-stock'>Hết hàng</span>"%></td>
                 <td><%= String.format("%,.2f", product.getPrice())%> $</td> 
                 <td>
-                    <a href="editProduct.jsp?id=<%= product.getId()%>" class="btn btn-warning product-edit-btn">Sửa</a>
+                    <a href="EditProductServlet?id=<%= product.getId()%>" class="btn btn-warning product-edit-btn">Sửa</a>
                     <a href="#" onclick="confirmDelete(<%= product.getId()%>)" class="btn btn-danger product-delete-btn">Xóa</a>
                 </td>
             </tr>

@@ -10,6 +10,10 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class EditProductServlet extends HttpServlet {
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("editProduct.jsp").forward(request, response);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -32,7 +36,7 @@ public class EditProductServlet extends HttpServlet {
             response.sendRedirect("dashboard.jsp");
         } else {
             request.setAttribute("error", "Cập nhật sản phẩm thất bại!");
-            request.getRequestDispatcher("editProduct.jsp?id=" + productId).forward(request, response);
+            request.getRequestDispatcher("EditProductServet?id=" + productId).forward(request, response);
         }
     }
 }

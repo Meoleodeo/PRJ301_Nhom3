@@ -10,18 +10,20 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("login.jsp").forward(request, response);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         User user = UserDAO.getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
-            User fullUser = UserDAO.getUserWithBalance(username);
             HttpSession session = request.getSession();
-            session.setAttribute("user", fullUser);
+            session.setAttribute("user", user);
 
             if ("buyer".equals(user.getRole())) {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("home");
             } else {
                 response.sendRedirect("dashboard.jsp");
             }

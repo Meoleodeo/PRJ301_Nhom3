@@ -20,7 +20,7 @@ public class PayOrderServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         if (user == null || !"buyer".equals(user.getRole())) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("LoginServlet");
             return;
         }
         int productId = Integer.parseInt(request.getParameter("productId"));
@@ -37,17 +37,17 @@ public class PayOrderServlet extends HttpServlet {
 
         if (result == 0) {
             OrderDAO.updatePaymentStatus(orderId, "Paid");
-            response.sendRedirect("order.jsp?success=true");
+            response.sendRedirect("OrderServlet?success=true");
         } else if (result == 1) {
-            response.sendRedirect("order.jsp?error=insufficient_balance");
+            response.sendRedirect("OrderServlet?error=insufficient_balance");
         } else if (result == 2) {
-            response.sendRedirect("order.jsp?error=out_of_stock");
+            response.sendRedirect("OrderServlet?error=out_of_stock");
         } else if (result == -1) {
-            response.sendRedirect("order.jsp?error=buyer_not_found");
+            response.sendRedirect("OrderServlet?error=buyer_not_found");
         } else if (result == -2) {
-            response.sendRedirect("order.jsp?error=seller_not_found");
+            response.sendRedirect("OrderServlet?error=seller_not_found");
         } else {
-            response.sendRedirect("order.jsp?error=unknown_error");
+            response.sendRedirect("OrderServlet?error=unknown_error");
         }
     }
 }

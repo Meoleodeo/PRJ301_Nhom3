@@ -173,7 +173,7 @@ BEGIN
 END;
 
 
-
+-- new procedure for payment
 IF OBJECT_ID('PayOrder','P') IS NOT NULL 
     DROP PROC PayOrder;
 GO
