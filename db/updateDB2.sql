@@ -172,7 +172,7 @@ BEGIN
     COMMIT TRANSACTION;
 END;
 
-
+go
 
 IF OBJECT_ID('PayOrder','P') IS NOT NULL 
     DROP PROC PayOrder;

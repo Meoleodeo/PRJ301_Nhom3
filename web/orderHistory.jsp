@@ -25,6 +25,7 @@
             <a class="btn btn-outline-info order-btn" href="order.jsp" role="button">View your order</a>
         </div>
     </div>   
+    <%@ include file="includes/chat.jsp" %>
     <%@ include file="includes/footer.jsp" %>
 </body>
 </html>
