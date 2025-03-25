@@ -172,8 +172,8 @@ BEGIN
     COMMIT TRANSACTION;
 END;
 
+go
 
--- new procedure for payment
 IF OBJECT_ID('PayOrder','P') IS NOT NULL 
     DROP PROC PayOrder;
 GO
@@ -257,4 +257,3 @@ BEGIN
 
     RETURN 0; -- Success
 END;
-

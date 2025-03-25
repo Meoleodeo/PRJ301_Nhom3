@@ -51,6 +51,7 @@
             </table>
         </div>
     </div>  
+    <%@ include file="includes/chat.jsp" %>
     <%@ include file="includes/footer.jsp" %>
 </body>
 </html>

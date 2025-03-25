@@ -12,4 +12,5 @@
         <button type="submit" class="btn btn-primary mt-3 product-submit-btn">Thêm</button>
     </form>
 </div>
+<%@ include file="includes/chat.jsp" %>
 <%@ include file="includes/footer.jsp" %>
