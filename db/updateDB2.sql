@@ -172,3 +172,89 @@ BEGIN
     COMMIT TRANSACTION;
 END;
 
+
+
+IF OBJECT_ID('PayOrder','P') IS NOT NULL 
+    DROP PROC PayOrder;
+GO
+
+CREATE PROCEDURE PayOrder
+    @sellerId INT,
+    @buyerId INT,
+    @quantity INT,
+    @price SMALLMONEY,
+    @orderId INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @totalPrice FLOAT;
+    DECLARE @buyerCard BIGINT, @buyerBalance INT;
+    DECLARE @sellerCard BIGINT, @sellerBalance INT;
+    DECLARE @productId INT;
+
+    -- Tính tổng tiền
+    SET @totalPrice = @quantity * @price;
+
+    -- Lấy thông tin thẻ và số dư của người mua
+    SELECT @buyerCard = u.cardNumber, @buyerBalance = c.blance
+    FROM Users u
+    JOIN Cards c ON u.cardNumber = c.cardNumber
+    WHERE u.id = @buyerId;
+
+    IF @buyerBalance IS NULL
+    BEGIN
+        RETURN -1; -- Buyer not found
+    END
+
+    -- Kiểm tra số dư người mua
+    IF @buyerBalance < @totalPrice
+    BEGIN
+        RETURN 1; -- Insufficient balance
+    END;
+
+    -- Lấy thông tin thẻ và số dư của người bán
+    SELECT @sellerCard = u.cardNumber, @sellerBalance = c.blance
+    FROM Users u
+    JOIN Cards c ON u.cardNumber = c.cardNumber
+    WHERE u.id = @sellerId;
+
+    IF @sellerCard IS NULL
+    BEGIN
+        RETURN -2; -- Seller not found
+    END
+
+    -- Kiểm tra sản phẩm có đủ số lượng không
+    SELECT @productId = id
+    FROM Products
+    WHERE sellerId = @sellerId AND quantity >= @quantity;
+
+    IF @productId IS NULL
+    BEGIN
+        RETURN 2; -- Insufficient stock
+    END;
+
+    -- Bắt đầu transaction
+    BEGIN TRANSACTION;
+
+    -- Trừ tiền người mua
+    UPDATE Cards SET blance = blance - @totalPrice WHERE cardNumber = @buyerCard;
+
+    -- Cộng tiền người bán
+    UPDATE Cards SET blance = blance + @totalPrice WHERE cardNumber = @sellerCard;
+
+    -- Giảm số lượng sản phẩm
+    UPDATE Products SET quantity = quantity - @quantity WHERE id = @productId;
+
+    -- Cập nhật trạng thái đơn hàng
+    UPDATE Orders SET paymentStatus = 'Paid' WHERE id = @orderId;
+
+    -- Ghi lịch sử giao dịch
+    INSERT INTO TransferHistory (userId, orderId, transacsion)
+    VALUES (@buyerId, @orderId, 'Payment');
+
+    COMMIT TRANSACTION;
+
+    RETURN 0; -- Success
+END;
+

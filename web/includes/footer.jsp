@@ -36,9 +36,38 @@
         </div>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
+<script>
+    // Hàm lấy URL parameters
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Lấy giá trị từ URL
+    const success = getUrlParameter("success");
+    const error = getUrlParameter("error");
+
+    // Hiển thị SweetAlert tùy theo kết quả
+    if (success === "true") {
+        Swal.fire({
+            title: "Thanh toán thành công",
+            icon: "success",
+            draggable: true // Thực ra SweetAlert2 không hỗ trợ 'draggable', nên dòng này có thể bỏ nếu không dùng plugin ngoài.
+        });
+    }
+
+    if (error === "insufficient_balance") {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Bạn không đủ số dư"
+        });
+    }
+</script>
 <script>
     let prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
+    window.onscroll = function () {
         let currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
             document.querySelector(".navbar-custom").classList.remove("hidden-navbar");
