@@ -4,20 +4,20 @@
 <%@ page import="dao.ProductDAO, model.Product, model.User, java.util.List" %>
 
 <body>
-    <div class="container">
-        <h2 class="text-center mt-5">Quản lý sản phẩm</h2>
-        <div class="d-flex justify-content-between mb-3">
-            <a href="addProduct.jsp" class="btn btn-success">+ Thêm sản phẩm</a>
-            <a href="ManageOrdersServlet" class="btn btn-primary">Quản lý đơn hàng</a>
+    <div class="container product-manage-wrapper">
+        <h2 class="text-center mt-5 product-manage-title">Quản lý sản phẩm</h2>
+        <div class="d-flex justify-content-between mb-3 product-manage-actions">
+            <a href="addProduct.jsp" class="btn btn-success product-add-btn">+ Thêm sản phẩm</a>
+            <a href="ManageOrdersServlet" class="btn btn-primary product-order-btn">Quản lý đơn hàng</a>
         </div>
 
-        <table class="table table-striped">
-            <tr>
+        <table class="table table-striped product-manage-table">
+            <tr class="product-table-header">
                 <th>Mã</th>
                 <th>Tên</th>
                 <th>Mô tả</th>
                 <th>Số lượng</th>
-                <th>Giá</th> <!-- Thêm cột Giá -->
+                <th>Giá</th>
                 <th>Hành động</th>
             </tr>
             <%
@@ -25,23 +25,31 @@
                     List<Product> products = ProductDAO.getProductsBySeller(user.getId());
                     for (Product product : products) {
             %>
-                <tr>
-                    <td><%= product.getId() %></td>
-                    <td><%= product.getName() %></td>
-                    <td><%= product.getDescription() %></td>
-                    <td><%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger'>Hết hàng</span>" %></td>
-                    <td><%= String.format("%,.2f", product.getPrice()) %> VNĐ</td> <!-- Hiển thị giá -->
-                    <td>
-                        <a href="editProduct.jsp?id=<%= product.getId() %>" class="btn btn-warning">Sửa</a>
-                        <a href="#" onclick="confirmDelete(<%= product.getId() %>)" class="btn btn-danger">Xóa</a>
-                    </td>
-                </tr>
-            <% 
+            <tr class="product-table-row">
+                <td><%= product.getId()%></td>
+                <td><%= product.getName()%></td>
+                <td><%= product.getDescription()%></td>
+                <td><%= product.getQuantity() > 0 ? product.getQuantity() : "<span class='text-danger product-out-of-stock'>Hết hàng</span>"%></td>
+                <td><%= String.format("%,.2f", product.getPrice())%> $</td> 
+                <td>
+                    <a href="editProduct.jsp?id=<%= product.getId()%>" class="btn btn-warning product-edit-btn">Sửa</a>
+                    <a href="#" onclick="confirmDelete(<%= product.getId()%>)" class="btn btn-danger product-delete-btn">Xóa</a>
+                </td>
+            </tr>
+            <%
                     }
-                } 
+                }
             %>
         </table>
     </div>
     <%@ include file="includes/footer.jsp" %>
+    <script>
+        function confirmDelete(productId) {
+            if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+                window.location.href = "DeleteProductServlet?id=" + productId;
+            }
+        }
+    </script>
+
 </body>
 </html>
